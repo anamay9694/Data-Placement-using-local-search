@@ -1,0 +1,10 @@
+The description of output is as follows:
+The first number represents the total assignment cost.
+The next number represents the total opening cost.
+The next number represents the final total cost.
+The next number represents the time taken in seconds.
+
+Note:Corresponding lines of the main program can be removed from comment to obtain the final assigment in the form of:
+   Cache number(Considering the cache capacity) : Object number
+Eg: When the cache capacity is 2,index 1 and index 2 represents the two slots of the Cache 1; 
+                                 index 3 and index 4 represents the two slots of the Cache 2 and so on...
