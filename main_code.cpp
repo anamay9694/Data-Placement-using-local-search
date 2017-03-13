@@ -65,7 +65,7 @@ int main()
     /* Do your stuff here */
     
 	
-	freopen("100.txt","r",stdin);				
+	freopen("input.txt","r",stdin);				
     //freopen("testing.txt","r",stdin);
     //freopen("out_cac_n.txt","w",stdout);
 	int n_n;//For cache capacity n
