@@ -1,0 +1,14 @@
+The description of the problem is as follows:
+
+1.  We have a set of caches F, a set of clients D, and a set of data
+objects O. Each cache i can store at most u_i data objects. Each
+client j∈ D has demand d_j for a specific data object o(j) ∈ O and
+has to be assigned to a cache that stores that object.
+
+2.  Storing an object o in cache i incurs a storage cost of f_io , and
+assigning client j to cache i incurs an access cost of d_j c_ij .
+
+3.  The goal is to find a placement of the data objects to caches
+respecting the capacity constraints, and an assignment of clients
+to caches, so as to minimize the total storage and client access
+costs.
