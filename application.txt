@@ -1,0 +1,6 @@
+    A content delivery network or content distribution network (CDN) is a globally distributed network of proxy servers deployed 
+in multiple data centers. The goal of a CDN is to serve content to end- users with high availability and high performance. 
+CDNs serve a large fraction of the Internet content today, including web objects (text, graphics and scripts) and social networks
+amongst others. 
+
+Having an efficient algorithm for data placement problem will help in this process.
