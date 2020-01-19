@@ -58,17 +58,10 @@ vector<int>object_vec;//To arrange the feasible solution in increasing order
 int main()
 {
 	clock_t t;
-		clock_t startTime = clock();
-//	clock_t tStart = clock();
-	t = clock();
-
-    /* Do your stuff here */
-    
-	
+	clock_t startTime = clock();
+        t = clock();
 	freopen("input.txt","r",stdin);				
-    //freopen("testing.txt","r",stdin);
-    //freopen("out_cac_n.txt","w",stdout);
-	int n_n;//For cache capacity n
+        int n_n;//For cache capacity n
 	
 	int n_cac_,n_obj_,n_cli_;//number of caches,objects and clients
 	cin>>n_n;
@@ -176,10 +169,7 @@ int main()
 	for(int i=1;i<=fea_counter;i++)//Assigning required objects to cache elements serially
 	{
 		c[i-1].oid=object_vec[i-1];
-//		cout<<"ou\n";
-//		cout<<c[i-1].getID()<<"\t";
-//		cout<<c[i-1].oid<<"\n";
-	}
+        }
 	//////////////Till now we have c filled with required objects serially//////////////////
 	///Index cache_element_number(cid)	 Object_in_that_cache_element(oid)
 	///0             1              		1
@@ -198,9 +188,6 @@ int main()
 	{
 		ran_=rand()%(fea_counter+1);
 		c[i-1].oid=object_vec[ran_];//index based computation of random elements to open in the blank spaces
-//		cout<<"ou\n";
-//		cout<<c[i-1].getID()<<"\t";
-//		cout<<c[i-1].oid<<"\n";
 	}
 	//Now we have c of the form//////
 	//Index Cache_element  Object
@@ -291,16 +278,6 @@ int main()
 		icos=vec_cost.begin();//Setting icos to the first cost,ie cost of placing the object i in the 1st free cache element location
 		
 		ic=vec_coor.begin();//Setting ic to the first free cache_element_location co-ordinates
-//		cout<<"ffff\n";
-		
-		/////////////////////Displaying The Free locations co-ordinates and the cost of placing object i in that location
-	//	while(ic!=vec_coor.end())
-	//	{
-//			cout<<(*ic).first<<" "<<(*ic).second<<"\n";
-//			cout<<(*icos)<<"\n";
-	//		ic++;
-	//		icos++;
-	//	}
 		
 		///////////////Finding the clients interested in object i//////////
 		vector<int>vec_n_cli;//To hold actual client number of client demanding the object i
@@ -339,22 +316,16 @@ int main()
 		
 		//Displaying the client element co-ordinates of the clients demanding object i
 		ic=vec_cli_cor.begin();
-	//	while(ic!=vec_cli_cor.end())
-	//	{
-	//		cout<<(*ic).first<<"\t"<<(*ic).second<<"\n";
-	//		ic++;
-	//	}
 		vector<pair<int,int> >vp;//Will hold the facilty location(ie cache element number) and the client assigned to that location
 	
 	vp=ufl_fun(count_zeros,vec_coor,vec_cost,count_z,vec_cli_cor,vec_demand);//Calling UFL with number_of_facilty_locations,co-ordinates of the facilty location,
        	
-	//cost of opening the respective facilities,number of clients demanding the object i and co-ordinates of the clients demanding the object i 
-		
-//vp is of the form
-//Index facility_number client_number
-//0          2             1
-//1          1             2
-//1          1             3  		
+	//cost of opening the respective facilities,number of clients demanding the object i and co-ordinates of the clients demanding the object i 	
+	//vp is of the form
+	//Index facility_number client_number
+	//0          2             1
+	//1          1             2
+	//1          1             3  		
 		
 		vector<pair<int,int> >::iterator ittt;//Iterator for the assignment of facilty location to client,returned by UFL
 	    ittt=vp.begin();//setting it to the first pair returned by UFL
@@ -362,33 +333,15 @@ int main()
 	while(ittt!=vp.end())//Iterating over all the pairs returned by UFL
 	{
 		c[mp.find((*ittt).first)->second-1].oid=i;//Setting the actual client_element(cid)'s oid with i,using the mapping from mp
-//		cout<<(*ittt).first<<"\t"<<(*ittt).second<<"\n";//Displaying the facilty number and client number pair returned by UFL
-		
 		pair<int,int>pa_ca=make_pair(c[mp.find((*ittt).first)->second-1].x,c[mp.find((*ittt).first)->second-1].y);//Making pair of co-ordinates of the actual cache_element
-//locations' x and y co-ordinates		
-//		cout<<pa_ca.first<<" ddd "<<pa_ca.second<<"\n";//Displaying the pair of x and y co-ordinates of the client_location(facilty location,returned by UFL)
-		
-		pair<int,int>pa_cli=make_pair(ve_cli_cor[(mp_cli.find((*ittt).second)->second)-1].first,ve_cli_cor[(mp_cli.find((*ittt).second)->second)-1].second);
-//Making pair of actual client co-ordinates served by the current open facility,from the mp_cli map prepared earlier
-//		cout<<(*ittt).second<<" "<<mp_cli.find((*ittt).second)->second-1<<"\n";//Displaying the map of client number returned by UFl and the actual client number
-		
-//		cout<<pa_cli.first<<" ddd "<<pa_cli.second<<"\n";//Displaying the client's actual co-ordinates
-		double dis_h=cal_assign_cost(pa_ca,pa_cli)*(ve_cli[mp_cli.find((*ittt).second)->second-1].second.second);//2nd value is demand
-	//	double diss_h=(ve_cli[mp_cli.find((*ittt).second)->second-1].second.second)*cal_assign_cost(pa_ca,pa_cli)*(ve_cli[mp_cli.find((*ittt).second)->second-1].second.second);
-	//	cout<<"ggg"<<"\n";
-	//	cout<<dis_h<<"\n";
-		
-	//	cout<<"mul\n";
-	//	cout<<(ve_cli[mp_cli.find((*ittt).second)->second-1].second.second)<<"\n";
-	//	cout<<"ttt\n";
-//		cout<<dis_h<<"\n";
-//Calculating the assignment cost by using cal_assign_cost function and then multiplying it with the corresponding demand
+                //locations' x and y co-ordinates		
+                pair<int,int>pa_cli=make_pair(ve_cli_cor[(mp_cli.find((*ittt).second)->second)-1].first,ve_cli_cor[(mp_cli.find((*ittt).second)->second)-1].second);
+                //Making pair of actual client co-ordinates served by the current open facility,from the mp_cli map prepared earlier
+                double dis_h=cal_assign_cost(pa_ca,pa_cli)*(ve_cli[mp_cli.find((*ittt).second)->second-1].second.second);//2nd value is demand
+                //Calculating the assignment cost by using cal_assign_cost function and then multiplying it with the corresponding demand
 		assign_local_cost+=dis_h;//Increment the assignment cost for the current iteration by dis_h
 		ittt++;//Increment the iterator to the next pair of location and client
 	}
-//	cout<<"mmmmmmm\n";
-//	cout<<i<<"\n";
-//	cout<<assign_local_cost<<"\n";
 	ittt=vp.begin();//Setting ittt to the first pair returned by UFl
 	int xz=-1;//Setting xz to -1 initially
 	//facilty locations returned by UFL are in non-decreasing order
@@ -403,18 +356,6 @@ int main()
 		}
 		ittt++;//Increment the iterator
 	}
-	
-	/*	for(int iy=1;iy<=(n_n*n_cac_);iy++)
-	{
-		//ran_=rand()%(fea_counter+1);
-		//c[i-1].oid=object_vec[ran_];//index based computation of random elements to open in the blank spaces
-		cout<<"ou\n";
-		cout<<c[iy-1].getID()<<"\t";
-		cout<<c[iy-1].oid<<"\n";
-	}
-	
-	*/
-	
 	}
 	
 	
@@ -438,29 +379,25 @@ int main()
 	
 	if(tru==true)//If there is no change in c since previous iteration
 	{
-/////////////Displaying the content of the cache_element in the solution///////
+                ////Displaying the content of the cache_element in the solution///////
 		itc=c.begin();//Set itc to the first cache element
 		int cv=0;//A counter to display the cache_element number
 		while(itc!=c.end())//Iterate over all the cache_element locations
 	{
 		cv++;//Increment the counter for cache_element number
-//		cout<<cv<<"\t"<<(*itc).oid<<"\n";//Display cache_element number and the object in it
 		itc++;//Increment the iterator
 	}
 		
 		
 		break;//Break out of while loop
 	}
-//	cout<<assign_local_cost<<"\n";//Display the assignment cost in the current iteration
-      }
+	}
       
       cout<<assign_local_cost<<"\n";//Display the final assignment cost
       cout<<open_local_cost<<"\n";//Display the final opening cost
       cout<<assign_local_cost+open_local_cost<<"\n";//Display the final total cost
       t = clock() - t;
- // printf ("It took me %d clicks (%f seconds).\n",t,((float)t)/CLOCKS_PER_SEC);
-  //printf("Time taken: %.6fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
-  cout.precision(8);
-  cout << fixed<<double( clock() - startTime ) / (double)CLOCKS_PER_SEC<< " seconds." << endl;
-	return 0;
+      cout.precision(8);
+      cout << fixed<<double( clock() - startTime ) / (double)CLOCKS_PER_SEC<< " seconds." << endl;
+      return 0;
 }
